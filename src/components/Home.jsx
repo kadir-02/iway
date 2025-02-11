@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa6";
 import ProductCard from "./ProductCard";
 import NewArrivals from "./NewArrivals";
 import Footer from "./Footer";
+import { useState } from "react";
 
 const Home = () => {
   const { data, toggleCartItem, cart, feturedata } = useData();
@@ -23,12 +24,19 @@ const Home = () => {
     },
   ];
 
+  const [genderFilter, setGenderFilter] = useState("all");
+
+  const filteredData = data.filter((prod) => {
+    if (genderFilter === "all") return true;
+    return prod.gender === genderFilter;
+  });
+
   return (
     <div
       id="home"
       className="mt-20 flex flex-col w-full h-auto items-center justify-center gap-10"
     >
-      {/* Carousel - Displayed only once */}
+      {/* Carousel */}
       <Carousel />
 
       {/* Banner Image */}
@@ -98,8 +106,67 @@ const Home = () => {
         <h1 className="text-2xl md:text-3xl font-semibold text-center uppercase mb-8 text-gray-800">
           Products
         </h1>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {data.map((prod) => (
+        {/* Gender Filter */}
+        <div className="flex justify-center gap-10 mb-15">
+          <button
+            className={`${
+              genderFilter === "all"
+                ? "text-[#35BBD1] font-semibold text-xl"
+                : "text-black font-semibold text-xl"
+            }`}
+            onClick={() => setGenderFilter("all")}
+          >
+            <img
+              className="object-cover w-full h-full rounded-full  "
+              src="https://d3995ea24pmi7m.cloudfront.net/fit-in/132x132/media/wysiwyg/titan_cms/shop_by_category/men_sunglasses.png"
+              alt=""
+            />
+            All
+          </button>
+          <button
+            className={`${
+              genderFilter === "male"
+                ? "text-[#35BBD1] font-semibold text-xl"
+                : "text-black font-semibold text-xl"
+            }`}
+            onClick={() => setGenderFilter("men")}
+          >
+            <img
+              className="object-cover w-full h-full rounded-full  "
+              src="https://d3995ea24pmi7m.cloudfront.net/fit-in/132x132/media/wysiwyg/titan_cms/shop_by_category/men_eyeglasses.png"
+              alt=""
+            />
+            Male
+          </button>
+          <button
+            className={`${
+              genderFilter === "female"
+                ? "text-[#35BBD1] font-semibold text-xl"
+                : "text-black font-semibold text-xl"
+            }`}
+            onClick={() => setGenderFilter("women")}
+          >
+            <img
+              className="object-cover w-full h-full rounded-full  "
+              src="https://d3995ea24pmi7m.cloudfront.net/fit-in/132x132/media/wysiwyg/titan_cms/shop_by_category/women_sunglasses.png"
+              alt=""
+            />
+            Female
+          </button>
+          <button
+            className={`${
+              genderFilter === "unisex"
+                ? "text-[#35BBD1] font-semibold text-xl"
+                : "text-black font-semibold text-xl"
+            }`}
+            onClick={() => setGenderFilter("unisex")}
+          >
+            Unisex
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          {filteredData.map((prod) => (
             <ProductCard
               key={prod.id}
               product={prod}
