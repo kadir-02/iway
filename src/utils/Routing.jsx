@@ -6,6 +6,7 @@ import CardData from "../components/CardData";
 import EditForm from "../components/EditFrom";
 import ProductData from "../components/ProductData";
 import Cart from "../components/Cart";
+import Account from "../components/Account";
 
 const Routing = () => {
   return (
@@ -18,6 +19,7 @@ const Routing = () => {
         <Route path="/edit/:id" element={<EditForm />} />
         <Route path="/productdata/:id" element={<ProductData />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/account" element={<Account />} />
 
         {/*Fallback Route*/}
         <Route path="*" element={<NotFound />} />

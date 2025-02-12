@@ -102,12 +102,12 @@ const Home = () => {
       </div>
 
       {/* Product Cards */}
-      <div className="container mx-auto px-4 py-12 bg-[#EFFCFE] rounded-lg">
+      <div className="container mx-auto flex flex-col justify-center items-center px-4 py-12 bg-[#EFFCFE] rounded-lg">
         <h1 className="text-2xl md:text-3xl font-semibold text-center uppercase mb-8 text-gray-800">
           Products
         </h1>
         {/* Gender Filter */}
-        <div className="flex justify-center gap-10 mb-15">
+        <div className="flex justify-center  gap-10 mb-15">
           <button
             className={`${
               genderFilter === "all"
@@ -117,7 +117,7 @@ const Home = () => {
             onClick={() => setGenderFilter("all")}
           >
             <img
-              className="object-cover w-full h-full rounded-full  "
+              className="object-cover w-full h-full rounded-full hidden md:block  "
               src="https://d3995ea24pmi7m.cloudfront.net/fit-in/132x132/media/wysiwyg/titan_cms/shop_by_category/men_sunglasses.png"
               alt=""
             />
@@ -132,7 +132,7 @@ const Home = () => {
             onClick={() => setGenderFilter("men")}
           >
             <img
-              className="object-cover w-full h-full rounded-full  "
+              className="object-cover w-full h-full rounded-full hidden md:block  "
               src="https://d3995ea24pmi7m.cloudfront.net/fit-in/132x132/media/wysiwyg/titan_cms/shop_by_category/men_eyeglasses.png"
               alt=""
             />
@@ -147,7 +147,7 @@ const Home = () => {
             onClick={() => setGenderFilter("women")}
           >
             <img
-              className="object-cover w-full h-full rounded-full  "
+              className="object-cover w-full h-full rounded-full hidden md:block  "
               src="https://d3995ea24pmi7m.cloudfront.net/fit-in/132x132/media/wysiwyg/titan_cms/shop_by_category/women_sunglasses.png"
               alt=""
             />
@@ -165,7 +165,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 items-center justify-center mx-auto">
           {filteredData.map((prod) => (
             <ProductCard
               key={prod.id}

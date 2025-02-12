@@ -71,7 +71,7 @@ export default function Carousel() {
 
   return (
     <div className="relative w-full max-w-screen-xl mx-auto overflow-hidden rounded-lg shadow-lg">
-      <div className="relative w-full h-64 md:h-80">
+      <div className="relative w-full h-full sm:h-64 md:h-80">
         {/* Carousel Slides */}
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -92,18 +92,18 @@ export default function Carousel() {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-zinc-200 transition"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-zinc-200 transition md:left-6"
       >
         <BiLeftArrowAlt />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-zinc-200 transition"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-zinc-200 transition md:right-6"
       >
         <BiRightArrowAlt />
       </button>
 
-      {/* Pagination Dots */}
+      {/* Pagination Dots (optional) */}
       {/* <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <div

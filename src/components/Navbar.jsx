@@ -9,7 +9,6 @@ export default function Navbar() {
   const [searchValue, setSearchValue] = useState("");
   const { data, cart } = useData();
   const [filteredData, setFilteredData] = useState([]);
-
   const searchRef = useRef(null);
 
   const handleSearch = (e) => {
@@ -48,7 +47,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="fixed top-0 left-0 z-50 w-full bg-white shadow-md border-b border-gray-300">
-        <div className="flex items-center justify-between gap-50 h-16 px-6 max-w-screen-lg mx-auto">
+        <div className="flex items-center justify-between gap-4 h-16 px-6 max-w-screen-lg mx-auto">
           {/* Logo - Left Aligned */}
           <div className="flex-shrink-0">
             <Link
@@ -59,8 +58,11 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Search Bar - Centered  */}
-          <div ref={searchRef} className="relative w-full max-w-2xl mx-auto">
+          {/* Search Bar - Centered (visible on medium screens and above) */}
+          <div
+            ref={searchRef}
+            className="relative w-full max-w-2xl mx-auto hidden md:block"
+          >
             <form onSubmit={handleSearch}>
               <div className="relative">
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
@@ -130,8 +132,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className="bg-black w-full text-white py-10 px-5 sm:px-20">
-        <div className="flex flex-col sm:flex-row justify-between gap-10 sm:gap-20">
+      {/* Black Navigation Links Section (hide on small screens) */}
+      <div className="bg-black w-full text-white py-10 px-5 hidden md:block">
+        <div className="flex flex-col xs:none sm:flex-row justify-between gap-10 sm:gap-20">
           <div className="flex items-center justify-center gap-6 text-xl mt-10 pt-5 m-auto">
             <a href="#eyeglasses" className="hover:text-[#35BBD1]">
               Eyeglasses
